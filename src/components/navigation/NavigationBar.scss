@@ -3,4 +3,14 @@
 .nav {
   background: $app-navigation-primary;
   height: 50px;
+  display: flex;
+
+  > a {
+    color: white;
+    text-decoration: none;
+    margin: auto 7px;
+    margin-left: auto;
+    padding: 8px 15px;
+  }
 }
+

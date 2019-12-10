@@ -8,6 +8,7 @@ class NavigationBar extends React.Component {
     render() {
         return (
             <div class="nav">
+                <a href="#">Log in</a>
             </div>
         )
     }
