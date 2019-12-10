@@ -9,8 +9,11 @@
     color: white;
     text-decoration: none;
     margin: auto 7px;
-    margin-left: auto;
     padding: 8px 15px;
+
+    &:first-child {
+      margin-right: auto;
+    }
   }
 }
 
