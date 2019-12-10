@@ -3,4 +3,17 @@
 .nav {
   background: $app-navigation-primary;
   height: 50px;
+  display: flex;
+
+  > a {
+    color: white;
+    text-decoration: none;
+    margin: auto 7px;
+    padding: 8px 15px;
+
+    &:first-child {
+      margin-right: auto;
+    }
+  }
 }
+
