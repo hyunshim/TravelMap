@@ -1,4 +1,4 @@
-$app-background-primary: #B7D3F2;
+@import './utils/variables';
 
 .app {
   background: $app-background-primary;
