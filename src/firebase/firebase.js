@@ -1,31 +1,18 @@
-const config_prod = {
-    apiKey: process.env.FB_APIKEY,
-    authDomain: process.env.FB_AUTHDOMAIN,
-    databaseURL: process.env.FB_DATABASEURL,
-    projectId: process.env.FB_PROJECTID,
-    storageBucket: process.env.FB_STORAGEBUCKET,
-    messagingSenderId: process.env.FB_MESSAGINGSENDERID,
-    appId: process.env.FB_APPID,
-    measurementId: process.env.FB_MEASUREMENTID
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+const config = {
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASEURL,
+    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_DEV_APPID,
+    measurementId: process.env.REACT_APP_DEV_MEASUREMENTID
 };
 
-const config_dev = {
-  apiKey: process.env.DEV_FB_APIKEY,
-  authDomain: process.env.DEV_FB_AUTHDOMAIN,
-  databaseURL: process.env.DEV_FB_DATABASEURL,
-  projectId: process.env.DEV_FB_PROJECTID,
-  storageBucket: process.env.DEV_FB_STORAGEBUCKET,
-  messagingSenderId: DEV_process.env.FB_MESSAGINGSENDERID,
-  appId: process.env.DEV_FB_APPID,
-  measurementId: process.env.DEV_FB_MEASUREMENTID
-};
+const firebase_app = firebase.initializeApp(config);
+const provider = new firebase.auth.GoogleAuthProvider();
 
-const config = process.env.NODE_ENV === 'production' ? config_prod : config_dev;
-
-class Firebase {
-  constructor() {
-    app.initializeApp(config);
-  }
-}
-
-export default Firebase;
+export { firebase_app, provider };
