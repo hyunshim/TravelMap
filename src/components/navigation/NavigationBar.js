@@ -1,7 +1,7 @@
 import React from "react";
 import "./NavigationBar.scss";
 
-import { firebase_app, provider } from "../../firebase/firebase";
+import { firebase_app, provider, db } from "../../firebase/firebase";
 
 class NavigationBar extends React.Component {
   constructor(props) {
@@ -47,6 +47,10 @@ class NavigationBar extends React.Component {
   render() {
     const user = this.props.user;
 
+    db.collection('users').doc('Q8DHNa5AdN6rX3PZGZJ2').get().then(doc => {
+      console.log("doc", doc.data());
+    })
+
     return (
       <div className="nav">
         <a>TravelMap</a>
@@ -65,11 +69,13 @@ class NavigationBar extends React.Component {
         )}
 
         <div className="sideNav" style={{ width: this.state.sideNavWidth }}>
-          <div style={{ display: this.state.sideNavContent }}>
-            <h1 className="title">{user ? user.displayName : ""}</h1>
-            <div className="logout">
-              <a onClick={() => this.logout()}>Log out</a>
-            </div>
+          <div className="title">
+            <h1>{user ? user.displayName : ""}</h1>
+            <div className="logout"><a onClick={() => this.logout()}>Log out</a></div>
+          </div>
+
+          <div className="friends">
+            <h2>Friends</h2>
           </div>
         </div>
       </div>

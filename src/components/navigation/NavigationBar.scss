@@ -37,31 +37,44 @@
   color: white;
   display: flex;
   flex-direction: column;
+  text-align: center;
 
-  .title, .logout {
-    text-align: center;
+  h1,
+  h2 {
+    font-weight: 300;
   }
 
-  .title {
-    font-weight: 300;
+  h1 {
     margin-bottom: 10px;
   }
 
-  .logout {
-    background-color: #39e3d3;
-    width: 80px;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 20px;
-    margin: 0 auto;
-    color: $app-navigation-primary;
-    font-size: 13px;
-    font-weight: 600;
-    transition: 0.8s;
+  h2 {
+    margin-bottom: 0;
+  }
 
-    &:hover {
-      background: #f65c78;
-      color: white;
+  .title {
+    > .logout {
+      background-color: #39e3d3;
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 20px;
+      margin: 0 auto;
+      color: $app-navigation-primary;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.8s;
+      margin-bottom: 25px;
+
+      &:hover {
+        background: #f65c78;
+        color: white;
+      }
     }
+  }
+
+  .friends {
+    margin: 0 20px;
+    border-bottom: 1px solid white;
   }
 }
