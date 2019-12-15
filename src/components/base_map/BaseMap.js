@@ -1,8 +1,16 @@
 import React from "react";
 import "./BaseMap.scss";
-import { Map, Marker, Popup, TileLayer, GeoJSON } from "react-leaflet";
+import {
+  Map,
+  Marker,
+  Popup,
+  TileLayer,
+  GeoJSON,
+  FeatureGroup,
+  Polygon
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import GeoMap from './geo.json';
+import GeoMap from "./geo.json";
 
 class BaseMap extends React.Component {
   constructor(props) {
@@ -16,8 +24,7 @@ class BaseMap extends React.Component {
   }
   render() {
     const position = [this.state.lat, this.state.lng];
-
-
+    console.log(GeoMap.features[0].geometry.coordinates)
     return (
       <div className="base-map">
         <Map
@@ -26,7 +33,8 @@ class BaseMap extends React.Component {
           center={position}
         >
           <TileLayer url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <GeoJSON data={GeoMap}/>
+          <GeoJSON data={GeoMap} />
+          <Polygon color="purple" positions={GeoMap.features[0].geometry.coordinates[1]} />
         </Map>
       </div>
     );
