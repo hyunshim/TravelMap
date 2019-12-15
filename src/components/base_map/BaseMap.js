@@ -1,10 +1,6 @@
 import React from "react";
 import "./BaseMap.scss";
-import {
-  Map,
-  TileLayer,
-  GeoJSON,
-} from "react-leaflet";
+import { Map, TileLayer, GeoJSON, Tooltip } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import GeoMap from "./geo.json";
 
@@ -20,36 +16,49 @@ class BaseMap extends React.Component {
   }
 
   handleClick(e) {
+    console.log("e", e);
     console.log("e", e.latlng);
     console.log(GeoMap.features);
   }
 
-  render() {
-    const position = [this.state.lat, this.state.lng];
+  handleMouseover(e) {
+    const layer = e.target;
+    layer.setStyle({
+      color: 'black'
+    })
+  }
+  // handleMouseout(e) {
+  //   geojson.resetStyle(e.target);
+  // }
+
+  addEventHover(feature, layer) {
+    console.log("feature", feature)
+    console.log("layer:", layer)
+    layer.on({
+      mouseover: () => {console.log("Zoom")}
+  });
+  }
+
+  componentDidMount() {
     const rc = () => Math.round(Math.random() * 255);
 
-    return (
-      <div className="base-map">
-        <Map
-          style={{ height: "100%", width: "100%" }}
-          zoom={this.state.zoom}
-          center={position}
-          onClick={this.handleClick}
-        >
-          <TileLayer url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+    const L = window.L;
+    const map = L.map("leaf").setView([this.state.lat, this.state.lng], this.state.zoom);
 
-          <GeoJSON
-            data={GeoMap}
-            style={() => ({
-              color: "black",
-              weight: 0.5,
-              fillColor: `rgb(${rc()}, ${rc()}, ${rc()})`,
-              fillOpacity: 0.2
-            })}
-          />
-        </Map>
-      </div>
-    );
+    L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+    L.geoJson(GeoMap, {
+      style: () => ({
+        color: this.state.col,
+        weight: 0.5,
+        fillColor: `rgb(${rc()}, ${rc()}, ${rc()})`,
+        fillOpacity: 0.2
+      }),
+      onEachFeature: this.addEventHover
+    }).addTo(map);
+  }
+
+  render() {
+    return <div id="leaf" className="base-map"></div>;
   }
 }
 
