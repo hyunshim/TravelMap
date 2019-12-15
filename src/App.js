@@ -37,7 +37,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <NavigationBar authHandler = {this.authHandler} user = {this.state.user}></NavigationBar>
-        <div>{this.state.user ? "Logged In" : "Logged Out"}</div>
+        <div>{this.state.user ? `Hi, ${this.state.user.displayName}!` : "Logged Out"}</div>
       </div>
     );
   }
