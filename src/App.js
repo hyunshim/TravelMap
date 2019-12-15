@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-import { firebase_app } from './firebase/Firebase';
+import { firebase_app } from './firebase/firebase';
 import NavigationBar from './components/navigation/NavigationBar';
 
 
@@ -16,7 +16,6 @@ class App extends React.Component {
     this.authListener = this.authListener.bind(this);
     this.authHandler = this.authHandler.bind(this);
   }
-
   componentDidMount() {
     this.authListener();
   }
@@ -30,13 +29,13 @@ class App extends React.Component {
 
   authHandler(user) {
     console.log(user);
-    this.setState({user: user});
+    this.setState({ user: user });
   }
 
   render() {
     return (
       <div className="app">
-        <NavigationBar authHandler = {this.authHandler} user = {this.state.user}></NavigationBar>
+        <NavigationBar authHandler={this.authHandler} user={this.state.user}></NavigationBar>
         <div>{this.state.user ? "Logged In" : "Logged Out"}</div>
       </div>
     );
