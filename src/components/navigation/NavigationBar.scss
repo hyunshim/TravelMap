@@ -44,6 +44,7 @@
 
   .title {
     font-weight: 300;
+    margin-bottom: 10px;
   }
 
   .logout {
@@ -56,5 +57,11 @@
     color: $app-navigation-primary;
     font-size: 13px;
     font-weight: 600;
+    transition: 0.8s;
+
+    &:hover {
+      background: #f65c78;
+      color: white;
+    }
   }
 }
