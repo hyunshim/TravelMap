@@ -1,4 +1,4 @@
-@import '../../utils/variables';
+@import "../../utils/variables";
 
 .base-map {
   background: white;
@@ -6,5 +6,7 @@
   width: 80%;
   border: 1px solid black;
   margin: 50px auto;
-  padding: 10px;
+  padding: 20px;
+  background-image: linear-gradient(to left, #c8d9ff 50%, transparent 50%);
+  background-size: 4px 100%;
 }
