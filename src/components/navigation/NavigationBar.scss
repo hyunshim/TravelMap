@@ -1,4 +1,4 @@
-@import '../../utils/variables';
+@import "../../utils/variables";
 
 .nav {
   background: $app-navigation-primary;
@@ -6,6 +6,7 @@
   display: flex;
 
   > a {
+    cursor: pointer;
     color: white;
     text-decoration: none;
     margin: auto 7px;
@@ -15,5 +16,47 @@
       margin-right: auto;
     }
   }
+
+  > .profilePic {
+    border-radius: 100%;
+    background-image: url("../../static/default-profile.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 18px;
+    margin-right: 15px;
+  }
 }
 
+.sideNav {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 50px;
+  right: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  background-color: $app-navigation-primary;
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+  .title, .logout {
+    text-align: center;
+  }
+
+  .title {
+    font-weight: 300;
+  }
+
+  .logout {
+    background-color: #39e3d3;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 20px;
+    margin: 0 auto;
+    color: $app-navigation-primary;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
