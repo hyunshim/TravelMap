@@ -1,6 +1,9 @@
 import React from 'react';
 import './BaseMap.scss';
 
+import MapElement from './MapElement';
+import DefaultMap from './DefaultMap';
+
 class BaseMap extends React.Component {
     constructor(props) {
         super(props);
@@ -8,7 +11,7 @@ class BaseMap extends React.Component {
     render() {
         return (
             <div class="base-map">
-                I've made you a playground to work with your map :)
+               <DefaultMap></DefaultMap>
             </div>
         )
     }
