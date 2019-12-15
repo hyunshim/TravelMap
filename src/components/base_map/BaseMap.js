@@ -15,44 +15,36 @@ class BaseMap extends React.Component {
     };
   }
 
-  handleClick(e) {
-    console.log("e", e);
-    console.log("e", e.latlng);
-    console.log(GeoMap.features);
-  }
-
-  handleMouseover(e) {
-    const layer = e.target;
-    layer.setStyle({
-      color: 'black'
-    })
-  }
-  // handleMouseout(e) {
-  //   geojson.resetStyle(e.target);
-  // }
-
   addEventHover(feature, layer) {
-    console.log("feature", feature)
-    console.log("layer:", layer)
     layer.on({
-      mouseover: () => {console.log("Zoom")}
-  });
+      mouseover: (e) => {
+        e.target.setStyle({fillOpacity: 1})
+      },
+      mouseout: (e) => {
+        e.target.setStyle({fillOpacity: 0.6})
+      }
+    });
   }
 
   componentDidMount() {
     const rc = () => Math.round(Math.random() * 255);
+    const style = () => {
+      return {
+        fillColor: `rgb(${rc()}, ${rc()}, ${rc()})`,
+        weight: 2,
+        opacity: 1,
+        color: "white",
+        dashArray: "3",
+        fillOpacity: 0.7
+      };
+    };
 
     const L = window.L;
     const map = L.map("leaf").setView([this.state.lat, this.state.lng], this.state.zoom);
 
     L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
     L.geoJson(GeoMap, {
-      style: () => ({
-        color: this.state.col,
-        weight: 0.5,
-        fillColor: `rgb(${rc()}, ${rc()}, ${rc()})`,
-        fillOpacity: 0.2
-      }),
+      style: style,
       onEachFeature: this.addEventHover
     }).addTo(map);
   }
