@@ -26,6 +26,7 @@ class NavigationBar extends React.Component {
     firebase_app.auth().signOut()
       .then((user) => {
         console.log("User: ", user);
+        this.setState({ sideNavWidth: 0 })
         this.props.authHandler(false);
       })
       .catch((error) => {
