@@ -6,7 +6,7 @@ import BaseMap from './components/base_map/BaseMap';
 
 function App() {
   return (
-    <div class="app">
+    <div className="app">
       <NavigationBar></NavigationBar>
       <BaseMap></BaseMap>
     </div>
